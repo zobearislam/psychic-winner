@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History & Society — Learning Prototype</title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">HISTORY & SOCIETY<small>LEARN • EXPLORE • UNDERSTAND</small></div>
+    <nav aria-label="Main navigation">
+      <button class="active" data-page="home">Home</button>
+      <button data-page="courses">Courses</button>
+      <button data-page="museum">Museum</button>
+      <button data-page="profile">My progress</button>
+    </nav>
+    <div class="stats">
+      <div class="stat">⭐ <strong id="xp">0</strong> XP</div>
+      <div class="stat">🔥 <strong id="streak">0</strong></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="homePage">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Your learning journey begins here</div>
+        <h1>Discover the story of humanity.</h1>
+        <p>Explore history, geography, government, economics and culture through short lessons and interactive activities.</p>
+        <button class="button" onclick="showPage('courses')">Explore courses →</button>
+      </div>
+      <div class="hero-mark" aria-hidden="true">⌂</div>
+    </div>
+    <div class="section-head"><div><div class="eyebrow" style="color:var(--gold)">Explore</div><h2>Learning departments</h2></div></div>
+    <div class="grid" id="departmentGrid"></div>
+    <div class="section-head"><div><div class="eyebrow" style="color:var(--gold)">Start learning</div><h2>Featured courses</h2></div><button class="ghost" onclick="showPage('courses')">View all →</button></div>
+    <div class="grid" id="featuredCourses"></div>
+  </section>
+
+  <section id="coursesPage" class="hidden">
+    <div class="page-title"><div class="eyebrow" style="color:var(--gold)">The academy</div><h2>Courses</h2><p>Choose a subject and begin with a short lesson.</p></div>
+    <div class="grid" id="allCourses"></div>
+  </section>
+
+  <section id="lessonPage" class="hidden">
+    <button class="ghost" onclick="showPage('courses')">← Back to courses</button>
+    <div class="page-title"><div class="eyebrow" style="color:var(--gold)" id="lessonDepartment"></div><h2 id="lessonTitle">Lesson</h2><p id="lessonDescription"></p></div>
+    <div class="lesson-layout">
+      <div class="card">
+        <div class="meta" id="questionCounter"></div>
+        <div class="progress"><span id="lessonProgress"></span></div>
+        <div class="question" id="questionText"></div>
+        <div class="answers" id="answerOptions"></div>
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+        <button class="button" id="checkButton" disabled onclick="checkAnswer()">Check answer</button>
+        <button class="button hidden" id="nextButton" onclick="nextQuestion()">Continue →</button>
+      </div>
+      <aside class="card">
+        <h3>Learning note</h3>
+        <p id="lessonNote">Read each question carefully. You can review the explanation after answering.</p>
+        <div class="meta">A little learning every day adds up.</div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="museumPage" class="hidden">
+    <div class="page-title"><div class="eyebrow" style="color:var(--gold)">The digital collection</div><h2>Museum collection</h2><p>Discover historical topics as you complete lessons. This starter collection will grow as you add content.</p></div>
+    <div class="grid" id="museumGrid"></div>
+  </section>
+
+  <section id="profilePage" class="hidden">
+    <div class="page-title"><div class="eyebrow" style="color:var(--gold)">Your account</div><h2>My learning progress</h2><p>Your progress is saved in this browser on this device.</p></div>
+    <div class="grid">
+      <div class="card"><div class="meta">TOTAL EXPERIENCE</div><h2 id="profileXP">0 XP</h2></div>
+      <div class="card"><div class="meta">LESSONS COMPLETED</div><h2 id="completedCount">0</h2></div>
+      <div class="card"><div class="meta">CURRENT STREAK</div><h2 id="profileStreak">0 days</h2></div>
+    </div>
+    <div class="section-head"><h2>Course progress</h2></div>
+    <div class="card" id="progressList"></div>
+    <p style="margin-top:15px"><button class="ghost" onclick="resetProgress()">Reset local progress</button></p>
+  </section>
+</main>
+<footer>Educational prototype • Built with HTML, CSS and JavaScript • Add and edit course content in the COURSES data in this file.</footer>
+
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+  </html>
